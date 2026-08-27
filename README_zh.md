@@ -14,7 +14,7 @@
 | 主线 | 代码 | 方法论与使用说明 | 当前内容 |
 | --- | --- | --- | --- |
 | General | [`General/`](General/) | [`docs/general/`](docs/general/index.md) | attention visualization、ROI extraction、PCA、t-SNE |
-| MLLM | [`MLLM/`](MLLM/) | [`docs/mllm/`](docs/mllm/index.md) | 多模态大语言模型方法论骨架 |
+| MLLM | [`MLLM/`](MLLM/) | [`docs/mllm/`](docs/mllm/index.md) | ROUGE-L 生成文本序列重合评估 |
 | Embodied | [`Embodied/`](Embodied/) | [`docs/embodied/`](docs/embodied/index.md) | 具身系统方法论骨架 |
 
 跨主线共享指标位于 [`Metrics/`](Metrics/)；参考环境与依赖版本见 [`setup/`](setup/README.md)。
@@ -24,6 +24,10 @@
 - [`General/attention_visualization/`](General/attention_visualization/)：Grad-CAM、Q/K/V 分析与热力图渲染。
 - [`General/roi_extraction/`](General/roi_extraction/)：Grounding DINO ROI bbox 提取、坐标几何与显式候选选择。
 - [`General/dimensionality_reduction/`](General/dimensionality_reduction/)：PCA 全局线性投影与 t-SNE 局部邻域可视化。
+
+## MLLM 方法
+
+- [`MLLM/rouge_l/`](MLLM/rouge_l/)：基于最长公共子序列的 ROUGE-L 生成文本评分。
 
 ## 共享指标
 

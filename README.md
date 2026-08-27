@@ -14,7 +14,7 @@ A model-agnostic reference repository for ablation studies and diagnostic analys
 | Track | Code | Methodology and usage | Current scope |
 | --- | --- | --- | --- |
 | General | [`General/`](General/) | [`docs/general/`](docs/general/index.md) | Attention visualization, ROI extraction, PCA, t-SNE |
-| MLLM | [`MLLM/`](MLLM/) | [`docs/mllm/`](docs/mllm/index.md) | Methodology scaffold for multimodal LLMs |
+| MLLM | [`MLLM/`](MLLM/) | [`docs/mllm/`](docs/mllm/index.md) | ROUGE-L generated-text evaluation |
 | Embodied | [`Embodied/`](Embodied/) | [`docs/embodied/`](docs/embodied/index.md) | Methodology scaffold for embodied systems |
 
 Cross-track metrics live in [`Metrics/`](Metrics/). Reproducible environment requirements are documented in [`setup/`](setup/README.md).
@@ -24,6 +24,10 @@ Cross-track metrics live in [`Metrics/`](Metrics/). Reproducible environment req
 - [`General/attention_visualization/`](General/attention_visualization/): Grad-CAM, Q/K/V analysis, and heatmap rendering.
 - [`General/roi_extraction/`](General/roi_extraction/): Grounding DINO ROI box extraction, box geometry, and explicit candidate selection.
 - [`General/dimensionality_reduction/`](General/dimensionality_reduction/): PCA for reusable linear projections and t-SNE for local-neighborhood visualization.
+
+## MLLM methods
+
+- [`MLLM/rouge_l/`](MLLM/rouge_l/): ROUGE-L generated-text scoring based on longest common subsequences.
 
 ## Shared metrics
 

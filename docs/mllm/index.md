@@ -2,7 +2,11 @@
 
 MLLM 主线用于整理多模态大语言模型的 ablation 方法，重点是分离模态输入、编码器、投影/采样模块、多模态 token 与语言解码器的影响。
 
-> 当前页面是方法论骨架，尚未提供 MLLM 专用的参考实现。下文列出的项目是未来候选方向，不是已支持功能。
+## 当前实现
+
+| 方法 | 代码路径 | 当前实现 |
+| --- | --- | --- |
+| [ROUGE-L](rouge_l.md) | `MLLM/rouge_l/` | LCS、单/多参考和 aligned batch 生成文本评分 |
 
 ## 拟整理的主题
 
@@ -17,16 +21,17 @@ MLLM 主线用于整理多模态大语言模型的 ablation 方法，重点是�
 
 ## 方法命名约定
 
-未来代码目录和文件使用小写 `snake_case`。函数名应描述实际操作和输出，不用 `run_ablation` 这类过度宽泛的名称。例如，将来可以考虑 `mask_modality_tokens` 或 `replace_visual_embeddings`，但只有在对应语义、mask 方向和返回值被明确定义后才应实现。
+代码目录和文件使用小写 `snake_case`。函数名描述实际操作和输出，不使用 `run_ablation` 之类宽泛名称。
 
 ## 公平比较的最小要求
 
 - 固定原始媒体、文本 prompt、chat template、tokenizer 和特殊 token 配置。
 - 记录视觉/音频预处理的 resize、crop、采样率、帧数和归一化参数。
-- 分开报告输入 token 数、生成 token 数、FLOPs/时延与任务指标；不要把更少的 token 预算当成无成本变量。
-- 若替换或遮蔽一种模态，同时设置零值、均值或打乱等对照，检查结果是否由分布偏移造成。
-- 生成任务必须固定 decoding 参数；使用采样时，对多个种子报告均值和离散度。
+- 分开报告输入 token 数、生成 token 数、FLOPs/时延与任务指标。
+- 若替换或遮蔽一种模态，设置零值、均值或打乱等 control，检查分布偏移。
+- 生成任务固定 decoding 参数；使用采样时报告多个 seed 的均值和离散度。
+- 文本指标固定 decode 后清洗、tokenization、reference 集合和空输出策略。
 
-## 未来实现的接口边界
+## 接口边界
 
-MLLM 专用层应只负责把模型特有的模态布局、token 索引和 mask 转换为统一中间表示。能够直接对张量完成的计算应继续复用 [General](../general/index.md) 方法，避免在每个模型适配器中复制算法。
+MLLM 专用层只负责把模型输出、模态布局和文本对象转换为统一中间表示。能够直接对张量完成的计算继续复用 [General](../general/index.md) 与 [Metrics](../metrics/index.md)，避免复制算法。

@@ -1,8 +1,11 @@
-"""Ablation methods for multimodal large language models."""
+"""ROUGE text-overlap metrics for multimodal language-model outputs."""
 
 from .rouge_l import (
     MultiReferenceRougeLScore,
+    RougeInput,
     RougeLScore,
+    RougeToken,
+    RougeTokenizer,
     compute_lcs_length,
     compute_rouge_l,
     compute_rouge_l_batch,
@@ -13,7 +16,10 @@ from .rouge_l import (
 
 __all__ = [
     "MultiReferenceRougeLScore",
+    "RougeInput",
     "RougeLScore",
+    "RougeToken",
+    "RougeTokenizer",
     "compute_lcs_length",
     "compute_rouge_l",
     "compute_rouge_l_batch",
