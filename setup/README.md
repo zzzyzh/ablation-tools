@@ -1,6 +1,6 @@
 # Setup
 
-本目录记录仓库参考实现的验证环境：Python 3.10+、PyTorch 2.6.0、Pillow 11.3.0，以及 Grounding DINO 适配使用的 Transformers 4.57.1。
+本目录记录仓库参考实现的验证环境：Python 3.10+、PyTorch 2.6.0、Pillow 11.3.0、Grounding DINO 适配使用的 Transformers 4.57.1，以及 t-SNE 使用的 scikit-learn 1.5.2。
 
 ```bash
 python -m pip install -r setup/requirements.txt

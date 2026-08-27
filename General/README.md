@@ -6,6 +6,6 @@
 
 - [`attention_visualization/`](attention_visualization/)：Grad-CAM、attention Grad-CAM、Q/K/V 特征图与热力图渲染。
 - [`roi_extraction/`](roi_extraction/)：Grounding DINO ROI bbox 候选提取、坐标几何与显式选择策略。
-- [`dimensionality_reduction/`](dimensionality_reduction/)：PCA 高维特征压缩、解释方差与可复用投影。
+- [`dimensionality_reduction/`](dimensionality_reduction/)：PCA 全局线性投影与 t-SNE 局部邻域可视化。
 
 方法论与迁移说明见 [`docs/general/`](../docs/general/index.md)。

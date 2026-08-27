@@ -6,7 +6,7 @@
 
 | 主线 | 代码 | 方法论与使用说明 | 当前内容 |
 | --- | --- | --- | --- |
-| General | [`General/`](General/) | [`docs/general/`](docs/general/index.md) | attention visualization、ROI extraction、PCA |
+| General | [`General/`](General/) | [`docs/general/`](docs/general/index.md) | attention visualization、ROI extraction、PCA、t-SNE |
 | MLLM | [`MLLM/`](MLLM/) | [`docs/mllm/`](docs/mllm/index.md) | 多模态大语言模型；当前为方法骨架 |
 | Embodied | [`Embodied/`](Embodied/) | [`docs/embodied/`](docs/embodied/index.md) | 具身系统；当前为方法骨架 |
 
@@ -16,7 +16,7 @@
 
 - [`General/attention_visualization/`](General/attention_visualization/)：Grad-CAM、Q/K/V 分析与热力图渲染；
 - [`General/roi_extraction/`](General/roi_extraction/)：Grounding DINO ROI bbox 提取、坐标几何与显式候选选择。
-- [`General/dimensionality_reduction/`](General/dimensionality_reduction/)：PCA 高维特征压缩、解释方差与可复用投影。
+- [`General/dimensionality_reduction/`](General/dimensionality_reduction/)：PCA 全局线性投影与 t-SNE 局部邻域可视化。
 
 当前 Metrics 指标族：
 

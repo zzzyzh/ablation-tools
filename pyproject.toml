@@ -20,6 +20,9 @@ grounding-dino = [
     "Pillow>=9.0",
     "transformers>=4.57.1,<5",
 ]
+dimensionality-reduction = [
+    "scikit-learn>=1.5,<2",
+]
 dev = [
     "pytest>=7.0",
     "ruff>=0.5",
