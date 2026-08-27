@@ -5,5 +5,7 @@
 - [`IoU/`](IoU/)：classwise/micro IoU、mIoU 与 frequency-weighted IoU。
 - [`Dice/`](Dice/)：classwise/micro Dice、mean/frequency-weighted Dice 与 generalized Dice。
 - [`ConfusionMatrix/`](ConfusionMatrix/)：标准混淆矩阵、Precision、Recall 与 F1。
+- [`MAE/`](MAE/)：绝对误差与 mean/sum/dimension reductions。
+- [`MSE/`](MSE/)：平方误差与 mean/sum/dimension reductions。
 
 使用约定见 [`docs/metrics/`](../docs/metrics/index.md)。

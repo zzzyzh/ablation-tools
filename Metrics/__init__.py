@@ -22,6 +22,8 @@ from .Dice import (
     compute_mean_dice,
 )
 from .IoU import IoUResult, MeanIoUResult, compute_iou, compute_mean_iou
+from .MAE import compute_mae, compute_mean_absolute_error
+from .MSE import compute_mean_squared_error, compute_mse
 
 __all__ = [
     "AverageMode",
@@ -38,8 +40,12 @@ __all__ = [
     "compute_f1_score",
     "compute_generalized_dice",
     "compute_iou",
+    "compute_mae",
+    "compute_mean_absolute_error",
     "compute_mean_dice",
     "compute_mean_iou",
+    "compute_mean_squared_error",
+    "compute_mse",
     "compute_precision",
     "compute_precision_recall_f1",
     "compute_recall",

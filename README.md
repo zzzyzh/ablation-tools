@@ -23,6 +23,8 @@
 - [`Metrics/IoU/`](Metrics/IoU/)：IoU、mIoU、micro 与 frequency-weighted IoU；
 - [`Metrics/Dice/`](Metrics/Dice/)：Dice、mean/micro/frequency-weighted 与 generalized Dice；
 - [`Metrics/ConfusionMatrix/`](Metrics/ConfusionMatrix/)：混淆矩阵、Precision、Recall 与 F1。
+- [`Metrics/MAE/`](Metrics/MAE/)：Mean Absolute Error 与显式 reduction；
+- [`Metrics/MSE/`](Metrics/MSE/)：Mean Squared Error 与显式 reduction。
 
 统一实验方法论与命名规范见 [`docs/index.md`](docs/index.md)，具体使用进入对应 docs 页面。
 
