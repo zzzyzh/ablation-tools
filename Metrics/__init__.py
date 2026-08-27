@@ -12,6 +12,12 @@ from .ConfusionMatrix import (
     extract_confusion_matrix_counts,
     validate_confusion_matrix,
 )
+from .CosineSimilarity import (
+    CosineReduction,
+    ZeroVectorPolicy,
+    compute_cosine_similarity,
+    compute_pairwise_cosine_similarity,
+)
 from .Dice import (
     DiceResult,
     GeneralizedDiceResult,
@@ -28,6 +34,7 @@ from .MSE import compute_mean_squared_error, compute_mse
 __all__ = [
     "AverageMode",
     "ConfusionMatrixCounts",
+    "CosineReduction",
     "DiceResult",
     "GeneralizedDiceResult",
     "GeneralizedDiceWeight",
@@ -35,7 +42,9 @@ __all__ = [
     "MeanDiceResult",
     "MeanIoUResult",
     "PrecisionRecallF1Result",
+    "ZeroVectorPolicy",
     "compute_confusion_matrix",
+    "compute_cosine_similarity",
     "compute_dice",
     "compute_f1_score",
     "compute_generalized_dice",
@@ -46,6 +55,7 @@ __all__ = [
     "compute_mean_iou",
     "compute_mean_squared_error",
     "compute_mse",
+    "compute_pairwise_cosine_similarity",
     "compute_precision",
     "compute_precision_recall_f1",
     "compute_recall",

@@ -10,7 +10,7 @@
 | [MLLM](mllm/index.md) | `MLLM/` | 多模态输入、token 与融合路径 | ROUGE-L 文本序列重合评估 |
 | [Embodied](embodied/index.md) | `Embodied/` | 感知、记忆、决策与控制链路 | 方法论骨架 |
 
-跨主线共享指标见 [Metrics](metrics/index.md)，当前包含 IoU、Dice、Confusion Matrix、MAE 与 MSE。
+跨主线共享指标见 [Metrics](metrics/index.md)，当前包含 IoU、Dice、Confusion Matrix、MAE、MSE 与 Cosine Similarity。
 
 ## Ablation 的最小闭环
 

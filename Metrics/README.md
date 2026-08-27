@@ -7,5 +7,6 @@
 - [`ConfusionMatrix/`](ConfusionMatrix/)：标准混淆矩阵、Precision、Recall 与 F1。
 - [`MAE/`](MAE/)：绝对误差与 mean/sum/dimension reductions。
 - [`MSE/`](MSE/)：平方误差与 mean/sum/dimension reductions。
+- [`CosineSimilarity/`](CosineSimilarity/)：严格 aligned 与显式二维 pairwise Cosine Similarity Score。
 
 使用约定见 [`docs/metrics/`](../docs/metrics/index.md)。

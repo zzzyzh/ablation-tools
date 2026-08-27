@@ -36,6 +36,7 @@ Cross-track metrics live in [`Metrics/`](Metrics/). Reproducible environment req
 - [`Metrics/ConfusionMatrix/`](Metrics/ConfusionMatrix/): confusion matrices, Precision, Recall, and F1.
 - [`Metrics/MAE/`](Metrics/MAE/): Mean Absolute Error with explicit reductions.
 - [`Metrics/MSE/`](Metrics/MSE/): Mean Squared Error with explicit reductions.
+- [`Metrics/CosineSimilarity/`](Metrics/CosineSimilarity/): aligned and explicit 2-D pairwise Cosine Similarity Score.
 
 See [`docs/index.md`](docs/index.md) for repository-wide methodology and naming conventions. Method-specific usage belongs in the corresponding documentation page rather than in the root README.
 

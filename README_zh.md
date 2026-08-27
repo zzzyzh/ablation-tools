@@ -36,6 +36,7 @@
 - [`Metrics/ConfusionMatrix/`](Metrics/ConfusionMatrix/)：混淆矩阵、Precision、Recall 与 F1。
 - [`Metrics/MAE/`](Metrics/MAE/)：具有显式 reduction 的 Mean Absolute Error。
 - [`Metrics/MSE/`](Metrics/MSE/)：具有显式 reduction 的 Mean Squared Error。
+- [`Metrics/CosineSimilarity/`](Metrics/CosineSimilarity/)：严格 aligned 与显式二维 pairwise Cosine Similarity Score。
 
 统一实验方法论与命名规范见 [`docs/index.md`](docs/index.md)。具体使用说明统一放在对应方法文档中，而不是根 README。
 
