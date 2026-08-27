@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ablation-tools"
+version = "0.1.0"
+description = "Model-agnostic reference implementations and methodology for ablation studies"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.0",
+]
+
+[project.optional-dependencies]
+visualization = [
+    "Pillow>=9.0",
+]
+dev = [
+    "pytest>=7.0",
+    "ruff>=0.5",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["General*", "MLLM*", "Embodied*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
