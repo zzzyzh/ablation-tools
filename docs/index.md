@@ -10,6 +10,8 @@
 | [MLLM](mllm/index.md) | `MLLM/` | 多模态输入、token 与融合路径 | 方法论骨架 |
 | [Embodied](embodied/index.md) | `Embodied/` | 感知、记忆、决策与控制链路 | 方法论骨架 |
 
+跨主线共享指标见 [Metrics](metrics/index.md)，当前包含 IoU/mIoU 与 Dice 指标族。
+
 ## Ablation 的最小闭环
 
 1. **假设**：说明要验证的机制和预期变化，不在看完结果后反向改写问题。
@@ -19,34 +21,26 @@
 5. **重复**：随机过程使用相同 seed 集合，报告均值、离散程度与有效样本数。
 6. **记录**：保留配置、代码/模型版本、原始结果与失败样本；展示归一化不能覆盖原始值。
 
-可视化与 ROI 定位首先是诊断证据，不自动构成因果结论。若要声称某个区域、head 或 token 对输出有因果作用，需要配套遮挡、置零、替换、置换或随机化等实际干预。
+可视化与 ROI 定位首先是诊断证据，不自动构成因果结论。实际干预与共享指标的统计口径都必须在实验前定义。
 
 ## 目录与 API 规范
 
-- 顶层代码主线固定为 `General`、`MLLM`、`Embodied`；方法目录和文件应直接表达研究问题。
-- 一个目录表达一个研究问题，一个文件表达一个方法族；不建立含义不清并不断膨胀的 `misc.py` 或 `utils.py`。
-- 公共名称采用“动作 + 对象”：`compute_*` 表示无副作用张量计算，`*Capture`/`*Extractor` 表示明确生命周期，`select_*` 表示实验策略，`render_*` 表示着色，`save_*` 表示写文件。
-- 公共 docstring 明确 shape、dtype、device、数值范围、坐标/mask 方向、归一化与返回值；不支持的布局应尽早报错，不静默猜测。
-- 同类方法统一参数词汇，例如 `head_dim`、`score_threshold`、`image_size`、`boxes_xyxy`。
+- Ablation 代码按 `General`、`MLLM`、`Embodied` 组织；共享指标在 `Metrics/` 下按 IoU、Dice 等数学定义组织，不按任务重复实现。
+- 一个目录表达一个研究问题或指标族，一个文件表达一个清晰方法；不建立不断膨胀的 `misc.py` 或 `utils.py`。
+- 公共名称采用“动作 + 对象”：`compute_*` 表示无副作用张量计算，`*Capture`/`*Extractor` 表示明确生命周期，`select_*` 表示实验策略。
+- 公共 docstring 明确 shape、dtype、device、数值范围、坐标/mask 方向、归一化与返回值；不支持的布局应尽早报错。
+- 同类方法统一参数词汇，例如 `num_classes`、`class_indices`、`absent_class`、`score_threshold`、`boxes_xyxy`。
 
 ## 模型无关边界
 
-通用实现只处理定义明确的张量。以下内容由迁移侧显式适配：
-
-- 模型层路径、输出字段与目标标量；
-- 图像/文本/历史观测/特殊 token 的索引范围；
-- patch 网格、crop、padding 与最终坐标变换；
-- 位置编码、归一化、mask/bias、softmax dtype、dropout 和模型特有缩放；
-- camera/episode 等任务对象，以及任务特定 fallback、缓存和结果 schema。
-
-核心函数不得硬编码任务数据路径、分辨率、设备、batch size 或 checkpoint。模型差异放在薄适配层，任务启发式放在调用侧显式选择策略。
+通用实现只处理定义明确的张量。模型层路径、任务对象、数据路径、缓存和 task-specific fallback 由迁移侧显式适配。指标函数不自动推断类别数，不把 logits 变成 hard labels，也不依据 shape 猜测 mask overlap 或 bbox overlap。
 
 ## 新方法交付检查
 
 - 方法名称脱离上下文仍能直接表达输入、动作或输出。
 - 代码能用合成张量或 fake backend 验证，不要求下载模型、数据或权重。
-- 对照变量、适用边界、已知局限和不能支持的结论均有文档。
+- 对照变量、统计口径、适用边界、已知局限和不能支持的结论均有文档。
 - 公式、shape、坐标/mask、异常输入、dtype/device 与资源释放完成临时验证。
 - 临时测试路径和输出在验证后删除，代码目录只保留可复用实现。
-- 主线索引、根导航、公共导出与文档示例和真实 API 一致。
+- 索引、根导航、公共导出与文档示例和真实 API 一致。
 - commit 保持单一 scope，body 记录张量契约、验证结果和迁移注意事项。

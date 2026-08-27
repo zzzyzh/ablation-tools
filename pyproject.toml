@@ -27,7 +27,7 @@ dev = [
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["General*", "MLLM*", "Embodied*"]
+include = ["General*", "MLLM*", "Embodied*", "Metrics*"]
 
 [tool.ruff]
 line-length = 100
