@@ -4,5 +4,6 @@
 
 - [`IoU/`](IoU/)：classwise/micro IoU、mIoU 与 frequency-weighted IoU。
 - [`Dice/`](Dice/)：classwise/micro Dice、mean/frequency-weighted Dice 与 generalized Dice。
+- [`ConfusionMatrix/`](ConfusionMatrix/)：标准混淆矩阵、Precision、Recall 与 F1。
 
-当前 overlap 指标只接收 hard class-index tensor。使用约定见 [`docs/metrics/`](../docs/metrics/index.md)。
+使用约定见 [`docs/metrics/`](../docs/metrics/index.md)。

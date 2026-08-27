@@ -20,7 +20,8 @@
 当前 Metrics 指标族：
 
 - [`Metrics/IoU/`](Metrics/IoU/)：IoU、mIoU、micro 与 frequency-weighted IoU；
-- [`Metrics/Dice/`](Metrics/Dice/)：Dice、mean/micro/frequency-weighted 与 generalized Dice。
+- [`Metrics/Dice/`](Metrics/Dice/)：Dice、mean/micro/frequency-weighted 与 generalized Dice；
+- [`Metrics/ConfusionMatrix/`](Metrics/ConfusionMatrix/)：混淆矩阵、Precision、Recall 与 F1。
 
 统一实验方法论与命名规范见 [`docs/index.md`](docs/index.md)，具体使用进入对应 docs 页面。
 
@@ -39,7 +40,7 @@
 ## Commit 要求
 
 - 一个 commit 只引入一个边界清楚的方法或指标族，代码、文档和公共导出应同提交完成。
-- 标题采用 `<type>(<scope>): <summary>`，例如 `feat(metrics): add IoU and Dice overlap metrics`。
+- 标题采用 `<type>(<scope>): <summary>`，例如 `feat(metrics): add confusion-matrix precision recall and f1`。
 - commit body 至少说明：新增方法、公共张量契约、模型无关边界、验证结果，以及已知限制或迁移注意事项。
 - 不提交运行产物、缓存、临时测试目录、下载权重或数据集；不把无关格式化和其他方法混入同一 commit。
 - 提交前检查 staged diff，确保导航、方法名称和文档链接准确，且不存在未说明的行为变化。

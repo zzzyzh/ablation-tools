@@ -6,24 +6,14 @@
 | --- | --- | --- |
 | [IoU](iou.md) | `Metrics/IoU/` | per-class、micro、mIoU、frequency-weighted IoU |
 | [Dice](dice.md) | `Metrics/Dice/` | per-class、micro、mean、frequency-weighted、generalized Dice |
+| [Confusion Matrix](confusion_matrix.md) | `Metrics/ConfusionMatrix/` | matrix/count、Precision、Recall、F1 |
 
 ## 统一约定
 
-- overlap 接口接收相同 shape/device 的 hard class-index tensor，不自动执行 argmax、sigmoid、threshold 或 one-hot。
-- `num_classes` 必须显式给出，不能从当前 batch 最大 label 推断，否则 absent class 会从评估中消失。
-- 所有有效 label 必须位于 `[0, num_classes - 1]`；`ignore_index` 只作用于 target，对应 prediction 在范围校验前一起移除。
-- 全部有效元素先汇总成全局 class count，再计算指标；这不是逐样本指标的平均。
-- `class_indices` 只决定 aggregate 纳入哪些类，不删除像素，也不改变 per-class count。
-- 计数为 `int64`，分数为 `float64`，device 与输入保持一致。
+- 指标函数接收定义明确的 tensor，不自动执行 argmax、sigmoid、threshold 或任务匹配。
+- 类别数、类别顺序、ignore/background 和 zero-division/absent-class 策略必须显式固定。
+- 先汇总全局 count 或混淆矩阵，再计算 dataset-level 指标；不要平均不同 batch 的比率。
+- 计数与分数的 dtype/device 行为由各指标页面明确说明。
 - 当前 IoU 是 hard-label set overlap，不是 bbox IoU；当前 Dice 不是 soft/probability Dice。
 
-## Absent class
-
-当某类 prediction 与 target 都为空时分母为零，由 `absent_class` 明确控制：
-
-- `"ignore"`：per-class 返回 NaN，并从 macro mean 排除；
-- `"zero"`：填 0 并纳入 mean；
-- `"one"`：填 1 并纳入 mean；
-- `"raise"`：只要选中类存在未定义指标就报错。
-
-正式比较必须固定该策略、类别顺序、background 是否纳入以及 ignore_index。
+具体的 absent class 约定见 [IoU](iou.md) 与 [Dice](dice.md)，混淆矩阵方向和 zero division 见 [Confusion Matrix](confusion_matrix.md)。
