@@ -28,6 +28,9 @@ grounding-dino = [
 dimensionality-reduction = [
     "scikit-learn>=1.5,<2",
 ]
+sentence-similarity = [
+    "sentence-transformers>=3.4,<4",
+]
 dev = [
     "pytest>=7.0",
     "ruff>=0.5",

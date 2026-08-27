@@ -7,6 +7,7 @@ MLLM 主线用于整理多模态大语言模型的 ablation 方法，重点是�
 | 方法 | 代码路径 | 当前实现 |
 | --- | --- | --- |
 | [ROUGE-L](rouge_l.md) | `MLLM/rouge_l/` | LCS、单/多参考和 aligned batch 生成文本评分 |
+| [MiniLM Semantic Cosine](sentence_similarity.md) | `MLLM/sentence_similarity/` | paraphrase-MiniLM-L6-v2 aligned sentence similarity |
 
 ## 拟整理的主题
 

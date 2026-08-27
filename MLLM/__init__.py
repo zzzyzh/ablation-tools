@@ -10,9 +10,15 @@ from .rouge_l import (
     tokenize_rouge_characters,
     tokenize_rouge_text,
 )
+from .sentence_similarity import (
+    MiniLMCosineSimilarityResult,
+    ParaphraseMiniLMCosineScorer,
+)
 
 __all__ = [
+    "MiniLMCosineSimilarityResult",
     "MultiReferenceRougeLScore",
+    "ParaphraseMiniLMCosineScorer",
     "RougeLScore",
     "compute_lcs_length",
     "compute_rouge_l",

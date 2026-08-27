@@ -5,5 +5,6 @@
 当前方法：
 
 - [`rouge_l/`](rouge_l/)：基于最长公共子序列的 ROUGE-L 生成文本重合评分。
+- [`sentence_similarity/`](sentence_similarity/)：基于 paraphrase-MiniLM-L6-v2 embedding 的 aligned semantic cosine score。
 
 方法论、使用与未来规划见 [`docs/mllm/`](../docs/mllm/index.md)。
