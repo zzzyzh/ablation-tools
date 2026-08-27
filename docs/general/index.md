@@ -8,6 +8,7 @@ General 主线收录与模型家族和任务类型无关的 ablation 操作。�
 | --- | --- | --- |
 | [注意力特征图可视化](attention_visualization.md) | 目标输出依赖哪些空间位置？Q/K 匹配与 V 聚合呈现什么结构？ | 可用：Grad-CAM 与 Q/K/V |
 | [Grounding DINO ROI BBox 提取](roi_extraction.md) | 如何从文本和图像生成可复用、可筛选的 ROI bbox？ | 可用：候选提取、坐标处理与选择 |
+| [Principal Component Analysis](pca.md) | 表征的主要线性变化方向和有效秩如何随 ablation 改变？ | 可用：fit/transform/inverse、解释方差、白化 |
 
 ## 通用边界
 
