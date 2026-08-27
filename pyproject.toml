@@ -7,6 +7,11 @@ name = "ablation-tools"
 version = "0.1.0"
 description = "Model-agnostic reference implementations and methodology for ablation studies"
 readme = "README.md"
+authors = [{name = "Zhonghao Yan"}]
+license = {file = "LICENSE"}
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+]
 requires-python = ">=3.10"
 dependencies = [
     "torch>=2.0",

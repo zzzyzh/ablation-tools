@@ -1,49 +1,74 @@
-# ablation-tools
+<h1 align="center">
+  <img src="assets/ablation-tools-icon.png" width="96" alt="ablation-tools icon"><br>
+  ablation-tools
+</h1>
 
-面向实验消融与诊断分析的通用参考仓库。项目沉淀模型无关的张量级实现、共享指标与方法论文档，方便将通用 ablation 操作迁移到具体模型和任务。
+<p align="center">
+  <a href="README.md">English</a> | <a href="README_zh.md">中文</a>
+</p>
 
-## 项目导航
+A model-agnostic reference repository for ablation studies and diagnostic analysis. It collects reusable tensor-level implementations, shared metrics, and methodology documents that can be migrated to concrete models and tasks.
 
-| 主线 | 代码 | 方法论与使用说明 | 当前内容 |
+## Project navigation
+
+| Track | Code | Methodology and usage | Current scope |
 | --- | --- | --- | --- |
-| General | [`General/`](General/) | [`docs/general/`](docs/general/index.md) | attention visualization、ROI extraction、PCA、t-SNE |
-| MLLM | [`MLLM/`](MLLM/) | [`docs/mllm/`](docs/mllm/index.md) | 多模态大语言模型；当前为方法骨架 |
-| Embodied | [`Embodied/`](Embodied/) | [`docs/embodied/`](docs/embodied/index.md) | 具身系统；当前为方法骨架 |
+| General | [`General/`](General/) | [`docs/general/`](docs/general/index.md) | Attention visualization, ROI extraction, PCA, t-SNE |
+| MLLM | [`MLLM/`](MLLM/) | [`docs/mllm/`](docs/mllm/index.md) | Methodology scaffold for multimodal LLMs |
+| Embodied | [`Embodied/`](Embodied/) | [`docs/embodied/`](docs/embodied/index.md) | Methodology scaffold for embodied systems |
 
-跨主线共享指标位于 [`Metrics/`](Metrics/)；参考环境与依赖版本见 [`setup/`](setup/README.md)。
+Cross-track metrics live in [`Metrics/`](Metrics/). Reproducible environment requirements are documented in [`setup/`](setup/README.md).
 
-当前 General 方法：
+## General methods
 
-- [`General/attention_visualization/`](General/attention_visualization/)：Grad-CAM、Q/K/V 分析与热力图渲染；
-- [`General/roi_extraction/`](General/roi_extraction/)：Grounding DINO ROI bbox 提取、坐标几何与显式候选选择。
-- [`General/dimensionality_reduction/`](General/dimensionality_reduction/)：PCA 全局线性投影与 t-SNE 局部邻域可视化。
+- [`General/attention_visualization/`](General/attention_visualization/): Grad-CAM, Q/K/V analysis, and heatmap rendering.
+- [`General/roi_extraction/`](General/roi_extraction/): Grounding DINO ROI box extraction, box geometry, and explicit candidate selection.
+- [`General/dimensionality_reduction/`](General/dimensionality_reduction/): PCA for reusable linear projections and t-SNE for local-neighborhood visualization.
 
-当前 Metrics 指标族：
+## Shared metrics
 
-- [`Metrics/IoU/`](Metrics/IoU/)：IoU、mIoU、micro 与 frequency-weighted IoU；
-- [`Metrics/Dice/`](Metrics/Dice/)：Dice、mean/micro/frequency-weighted 与 generalized Dice；
-- [`Metrics/ConfusionMatrix/`](Metrics/ConfusionMatrix/)：混淆矩阵、Precision、Recall 与 F1。
-- [`Metrics/MAE/`](Metrics/MAE/)：Mean Absolute Error 与显式 reduction；
-- [`Metrics/MSE/`](Metrics/MSE/)：Mean Squared Error 与显式 reduction。
+- [`Metrics/IoU/`](Metrics/IoU/): classwise/micro IoU, mIoU, and frequency-weighted IoU.
+- [`Metrics/Dice/`](Metrics/Dice/): classwise, mean, micro, frequency-weighted, and generalized Dice.
+- [`Metrics/ConfusionMatrix/`](Metrics/ConfusionMatrix/): confusion matrices, Precision, Recall, and F1.
+- [`Metrics/MAE/`](Metrics/MAE/): Mean Absolute Error with explicit reductions.
+- [`Metrics/MSE/`](Metrics/MSE/): Mean Squared Error with explicit reductions.
 
-统一实验方法论与命名规范见 [`docs/index.md`](docs/index.md)，具体使用进入对应 docs 页面。
+See [`docs/index.md`](docs/index.md) for repository-wide methodology and naming conventions. Method-specific usage belongs in the corresponding documentation page rather than in the root README.
 
-## 新增 ablation 的流程
+## Adding an ablation method
 
-1. Ablation 方法在 `General`、`MLLM`、`Embodied` 中选择主线；跨任务指标直接按指标族加入 `Metrics/`。
-2. 先定义假设、baseline、唯一变化项、输入输出张量契约与公平比较所需控制变量。
-3. 实现模型无关的核心计算；模型层定位、token 划分与任务对象转换留给调用侧。
-4. 在对应 `docs/` 路径增加同名说明，包含使用步骤、参数语义、迁移检查、局限与不能支持的结论。
-5. 用合成张量临时验证公式、shape、异常输入、dtype/device 和资源释放；验证结束后删除临时测试路径与产物。
-6. 更新索引、公共导出和根 README 导航，检查代码、文档与真实 API 完全一致。
-7. 提交前确认仓库不包含缓存、输出图片、模型/数据文件、临时脚本或调试文件。
+1. Place an ablation method under `General`, `MLLM`, or `Embodied`; place cross-task metrics directly under `Metrics/` by mathematical metric family.
+2. Define the hypothesis, baseline, single changed factor, tensor contract, and fair-comparison controls before implementation.
+3. Implement a model-agnostic core. Keep model layer lookup, token partitioning, and task-object conversion in the caller-side adapter.
+4. Add a matching page under `docs/` covering usage, parameter semantics, migration checks, limitations, and unsupported conclusions.
+5. Validate formulas, shapes, invalid inputs, dtype/device behavior, and resource lifecycles with temporary synthetic tests; remove temporary test paths and artifacts afterward.
+6. Update indexes, public exports, and root navigation, then verify that code, documentation, and actual APIs agree.
+7. Ensure the repository contains no caches, generated images, model/data files, temporary scripts, or debug probes before committing.
 
-详细规范见 [`docs/index.md`](docs/index.md)。
+## Commit requirements
 
-## Commit 要求
+- Keep one method or indivisible metric family per commit; code, documentation, and public exports should land together.
+- Use `<type>(<scope>): <summary>`, for example `feat(general): add t-SNE dimensionality reduction`.
+- The commit body should state the new method, tensor contract, model-independent boundary, validation performed, and known limitations.
+- Do not mix unrelated formatting, generated artifacts, downloaded weights, datasets, or temporary tests into the same commit.
+- Inspect the staged diff and verify navigation, naming, links, and behavioral changes before committing.
 
-- 一个 commit 只引入一个边界清楚的方法或指标族，代码、文档和公共导出应同提交完成。
-- 标题采用 `<type>(<scope>): <summary>`，例如 `feat(metrics): add confusion-matrix precision recall and f1`。
-- commit body 至少说明：新增方法、公共张量契约、模型无关边界、验证结果，以及已知限制或迁移注意事项。
-- 不提交运行产物、缓存、临时测试目录、下载权重或数据集；不把无关格式化和其他方法混入同一 commit。
-- 提交前检查 staged diff，确保导航、方法名称和文档链接准确，且不存在未说明的行为变化。
+## Citation
+
+If this repository supports your research, please cite it using [`CITATION.cff`](CITATION.cff) or:
+
+```bibtex
+@software{yan_2026_ablation_tools,
+  author  = {Yan, Zhonghao},
+  title   = {ablation-tools: Reusable Ablation Methods and Metrics},
+  year    = {2026},
+  version = {0.1.0},
+  url     = {https://github.com/zzzyzh/ablation-tools}
+}
+```
+
+## License
+
+Copyright 2026 Zhonghao Yan.
+
+Licensed under the [Apache License 2.0](LICENSE). This license permits use, modification, and redistribution, including commercial use, subject to its notice and license conditions, and includes an explicit patent grant.
