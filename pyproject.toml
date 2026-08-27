@@ -16,6 +16,10 @@ dependencies = [
 visualization = [
     "Pillow>=9.0",
 ]
+grounding-dino = [
+    "Pillow>=9.0",
+    "transformers>=4.57.1,<5",
+]
 dev = [
     "pytest>=7.0",
     "ruff>=0.5",

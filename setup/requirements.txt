@@ -1,3 +1,4 @@
 # Reference environment used to validate the reusable implementations.
 torch==2.6.0
 Pillow==11.3.0
+transformers==4.57.1
