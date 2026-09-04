@@ -8,7 +8,7 @@
 | --- | --- | --- | --- |
 | [General](general/index.md) | `General/` | 与任务类型无关的通用分析 | attention visualization、ROI extraction、PCA、t-SNE |
 | [MLLM](mllm/index.md) | `MLLM/` | 多模态输入、token 与融合路径 | ROUGE-L、MiniLM 语义相似度 |
-| [Embodied](embodied/index.md) | `Embodied/` | 感知、记忆、决策与控制链路 | 方法论骨架 |
+| [Embodied](embodied/index.md) | `Embodied/` | 感知、记忆、决策与控制链路 | inference latency、throughput、frequency conversion |
 
 跨主线共享指标见 [Metrics](metrics/index.md)，当前包含 IoU、Dice、Confusion Matrix、MAE、MSE 与 Cosine Similarity。
 

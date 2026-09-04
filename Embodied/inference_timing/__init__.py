@@ -1,16 +1,18 @@
-"""Ablation methods for embodied agents and policies."""
+"""Inference latency benchmarking and embodied frequency conversion."""
 
-from .inference_timing import (
+from .benchmark import (
     InferenceLatencyResult,
-    LatencyUnit,
     benchmark_inference,
+    create_torch_device_synchronizer,
+)
+from .frequency import (
+    LatencyUnit,
     compute_overlapped_replanning_capacity_hz,
     compute_synchronous_replanning_hz,
     convert_control_frequency_to_replanning_hz,
     convert_hz_to_latency,
     convert_latency_to_hz,
     convert_latency_to_seconds,
-    create_torch_device_synchronizer,
 )
 
 __all__ = [

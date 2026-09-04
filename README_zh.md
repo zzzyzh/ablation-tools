@@ -15,7 +15,7 @@
 | --- | --- | --- | --- |
 | General | [`General/`](General/) | [`docs/general/`](docs/general/index.md) | attention visualization、ROI extraction、PCA、t-SNE |
 | MLLM | [`MLLM/`](MLLM/) | [`docs/mllm/`](docs/mllm/index.md) | ROUGE-L 与 MiniLM 语义相似度 |
-| Embodied | [`Embodied/`](Embodied/) | [`docs/embodied/`](docs/embodied/index.md) | 具身系统方法论骨架 |
+| Embodied | [`Embodied/`](Embodied/) | [`docs/embodied/`](docs/embodied/index.md) | 推理计时、吞吐与频率换算 |
 
 跨主线共享指标位于 [`Metrics/`](Metrics/)；参考环境与依赖版本见 [`setup/`](setup/README.md)。
 
@@ -29,6 +29,10 @@
 
 - [`MLLM/rouge_l/`](MLLM/rouge_l/)：基于最长公共子序列的 ROUGE-L 生成文本评分。
 - [`MLLM/sentence_similarity/`](MLLM/sentence_similarity/)：基于 paraphrase-MiniLM-L6-v2 的 aligned semantic cosine score。
+
+## Embodied 方法
+
+- [`Embodied/inference_timing/`](Embodied/inference_timing/)：同步推理延迟、吞吐、Hz 与 replanning 频率换算。
 
 ## 共享指标
 

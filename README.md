@@ -15,7 +15,7 @@ A model-agnostic reference repository for ablation studies and diagnostic analys
 | --- | --- | --- | --- |
 | General | [`General/`](General/) | [`docs/general/`](docs/general/index.md) | Attention visualization, ROI extraction, PCA, t-SNE |
 | MLLM | [`MLLM/`](MLLM/) | [`docs/mllm/`](docs/mllm/index.md) | ROUGE-L and MiniLM semantic similarity |
-| Embodied | [`Embodied/`](Embodied/) | [`docs/embodied/`](docs/embodied/index.md) | Methodology scaffold for embodied systems |
+| Embodied | [`Embodied/`](Embodied/) | [`docs/embodied/`](docs/embodied/index.md) | Inference timing, throughput, and frequency conversion |
 
 Cross-track metrics live in [`Metrics/`](Metrics/). Reproducible environment requirements are documented in [`setup/`](setup/README.md).
 
@@ -29,6 +29,10 @@ Cross-track metrics live in [`Metrics/`](Metrics/). Reproducible environment req
 
 - [`MLLM/rouge_l/`](MLLM/rouge_l/): ROUGE-L generated-text scoring based on longest common subsequences.
 - [`MLLM/sentence_similarity/`](MLLM/sentence_similarity/): aligned semantic cosine scoring with paraphrase-MiniLM-L6-v2.
+
+## Embodied methods
+
+- [`Embodied/inference_timing/`](Embodied/inference_timing/): synchronized inference latency, throughput, Hz, and replanning-rate conversion.
 
 ## Shared metrics
 

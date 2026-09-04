@@ -2,7 +2,11 @@
 
 Embodied 主线用于整理具身智能系统中的 ablation 方法。它不只比较单次前向输出，还要处理环境随机性、闭环误差累积、动作执行和成功条件。
 
-> 当前页面是方法论骨架，尚未提供 Embodied 专用的参考实现。下文项目是后续整理候选，不代表当前 API 已支持。
+## 当前实现
+
+| 方法 | 代码路径 | 当前实现 |
+| --- | --- | --- |
+| [推理速度与频率换算](inference_timing.md) | `Embodied/inference_timing/` | callable benchmark、延迟统计、Hz 与 replanning 换算 |
 
 ## 拟整理的主题
 
@@ -17,22 +21,16 @@ Embodied 主线用于整理具身智能系统中的 ablation 方法。它不只�
 
 ## 实验单位与记录约定
 
-具身 ablation 的最小独立样本通常是一次 episode，而不是一帧观测。每次 rollout 建议记录：
-
-- task ID、episode ID、环境与策略随机种子、初始状态标识；
-- simulator/真机版本、控制频率、观测延迟、动作延迟和任务终止条件；
-- 每步原始观测或可重放的引用、模型输出、执行后动作和环境返回；
-- 成功率、完成时间、路径/动作效率、安全事件和失败类型；
-- 实验组与对照组的成对关系，以便在相同初始状态上做 paired comparison。
+具身 ablation 的最小独立样本通常是一次 episode，而不是一帧观测。每次 rollout 建议记录 task/episode ID、环境与策略 seed、初始状态、控制/观测延迟、逐步模型输出与执行动作、成功率、完成时间、安全事件和失败类型。
 
 ## 公平比较的最小要求
 
-- 对 baseline 与实验组复用同一组初始状态和环境种子，并随机化执行顺序。
-- 固定并报告 observation horizon、action horizon、chunk 执行策略、控制频率与最大步数。
-- 不将离线误差改善直接解读为闭环成功率改善；两者应分开报告。
-- 多任务结果同时报告宏平均、各任务样本数和失败分布，避免高频任务支配总分。
-- 真机试验先设定安全边界、终止条件和人工接管记录；安全配置不应因实验组而改变。
+- baseline 与实验组复用同一组初始状态和环境 seed，并随机化执行顺序。
+- 固定 observation/action horizon、chunk 执行策略、控制频率与最大步数。
+- 离线误差、模型 inference Hz 与闭环成功率分别报告，不互相替代。
+- 多任务结果同时报告宏平均、各任务样本数和失败分布。
+- 真机试验固定安全边界、终止条件和人工接管记录。
 
-## 未来实现的接口边界
+## 接口边界
 
-未来适配器应将环境和策略特有对象转换为统一的 episode/step 记录，不在通用统计中引入 simulator 分支。未来函数名应指出具体操作，例如 `truncate_observation_history` 或 `mask_action_dimensions`，而不是宽泛的 `ablate_policy`。对视觉中间量的分析应优先复用 [General](../general/index.md) 方法。
+适配器应将环境和策略对象转换为统一 episode/step 记录，不在通用统计中引入 simulator 分支。视觉中间量优先复用 [General](../general/index.md)，共享误差与相似度优先复用 [Metrics](../metrics/index.md)。
